@@ -1,0 +1,138 @@
+/* General container styling */
+.container {
+    margin-top: 20px;
+    padding: 0; /* Removed horizontal padding for full width */
+}
+
+/* Card custom styling */
+.card-custom {
+    border: none;
+    transition: transform 0.3s, box-shadow 0.3s;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    text-align: center;
+}
+
+.card-icon {
+    font-size: 2rem;
+}
+
+.card-title {
+    font-size: 1.25rem;
+    font-weight: 600;
+}
+
+.card-link {
+    text-decoration: none;
+    color: inherit;
+}
+
+.card-custom:hover {
+    transform: scale(1.05);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.card-body {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+/* Ensure equal card width and responsiveness */
+.row {
+    margin: 0; /* Remove horizontal spacing */
+}
+
+.col-md-4 {
+    padding: 0 15px; /* Add padding for columns */
+}
+
+@media (max-width: 992px) {
+    .col-md-4 {
+        flex: 1 1 50%; /* 2 cards per row on medium screens */
+    }
+}
+
+@media (max-width: 768px) {
+    .col-md-4 {
+        flex: 1 1 100%; /* Full width on small screens */
+    }
+}
+
+/* History section styling */
+.history-container {
+    display: flex;
+    flex-direction: column;
+    padding: 10px;
+    background-color: #f8f9fa;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    width: 100%; /* Full width for container */
+}
+
+.history-item {
+    background-color: #ffffff;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    margin-bottom: 10px; /* Increased margin for spacing */
+    padding: 10px; /* Increased padding for better readability */
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    font-size: 0.875rem; /* Smaller font size */
+}
+
+.history-item p {
+    margin: 0;
+}
+
+.history-item strong {
+    font-weight: 600;
+    color: #007bff; /* Adjust color for emphasis */
+}
+
+/* Chart container styling */
+.chart-container {
+    padding: 20px;
+    background-color: #f8f9fa;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    height: 400px; /* Fixed height for consistency */
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 100%; /* Full width for container */
+}
+
+.chart-title {
+    display: flex;
+    align-items: center;
+    margin-bottom: 10px;
+    font-size: 0.875rem; /* Smaller font size for the titles */
+}
+
+.chart-title h3 {
+    margin: 0;
+}
+
+/* Ensure the canvas elements take the full height and width of their containers */
+#ticketsChart,
+#statusPieChart,
+#categoryPieChart,
+#personnelChart {
+    height: 100% !important;
+    width: 100% !important;
+}
+
+/* Styling for links inside history items */
+.history-link {
+    text-decoration: none; /* Remove underline */
+    color: inherit; /* Inherit color from parent */
+    display: block; /* Make the entire block clickable */
+}
+
+.history-link:hover {
+    text-decoration: underline; /* Optional: Add underline on hover */
+    color: #0056b3; /* Optional: Change color on hover */
+}

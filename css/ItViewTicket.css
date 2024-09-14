@@ -1,0 +1,271 @@
+/* General Ticket Container Styles */
+.ticket-container .ticket-details,
+.ticket-container .ticket-history,
+.ticket-container .sub-tasks,
+.ticket-container .approval-requests,
+.ticket-comments,
+.private-comments,
+.approval-request-container,
+.sub-task-container {
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    padding: 15px;
+    background-color: #fff;
+    margin-bottom: 15px;
+}
+
+/* Specific Adjustments */
+.ticket-history,
+.ticket-comments,
+.private-comments {
+    background-color: #f8f9fa;
+}
+
+/* History Section Styles */
+.ticket-container .ticket-history {
+    max-height: 450px;
+    overflow-y: auto;
+}
+
+.ticket-history h4 {
+    font-size: 1.25rem;
+    color: #343a40;
+    margin-bottom: 15px;
+}
+
+.history-item {
+    background-color: #fff;
+    border: 1px solid #e9ecef;
+    border-radius: 5px;
+    padding: 15px;
+    margin-bottom: 10px;
+}
+
+/* Comments Section */
+.ticket-comments .comment-item,
+.private-comments .comment-item {
+    background-color: #fff;
+    border: 1px solid #e9ecef;
+    border-radius: 5px;
+    padding: 15px;
+    margin-bottom: 10px;
+}
+
+/* Styling for Comments by the Current User */
+.ticket-comments .my-comment,
+.private-comments .my-comment {
+    background-color: #e0f7fa;
+    border: 1px solid #b2ebf2;
+}
+
+/* Flexbox Layout */
+.d-flex {
+    display: flex;
+}
+
+.flex-column {
+    flex-direction: column;
+}
+
+.flex-grow-1 {
+    flex-grow: 1;
+}
+
+/* Adjust column padding */
+.col-md-4 {
+    padding: 0 15px;
+}
+
+.ticket-container .row {
+    display: flex;
+    flex-wrap: wrap;
+    margin-right: -15px;
+    margin-left: -15px;
+}
+
+.ticket-container .col-md-6 {
+    padding-right: 15px;
+    padding-left: 15px;
+}
+
+/* Comments and Forwarding Layout */
+
+
+.ticket-comments,
+.forwarding-history {
+    border: 1px solid #ddd;
+    padding: 15px;
+    border-radius: 5px;
+    margin-bottom: 15px;
+}
+.forwarding-history{
+   margin-left: 18px;
+
+
+}
+
+/* Forwarding History Styles */
+.forwarding-history .card {
+    border: 1px solid #e9ecef;
+    background-color: #f8f9fa;
+    border-radius: 5px;
+    
+}
+
+.forwarding-history .card-body {
+    padding: 15px;
+}
+
+.forwarding-history h5 {
+    font-size: 1.15rem;
+    color: #495057;
+}
+
+/* Comment Meta Styles */
+.ticket-container .comment-meta {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.ticket-container .comment-meta .text-muted {
+    margin-bottom: 0;
+}
+
+/* Approval Request and Sub-Task Containers */
+.approval-request-container,
+.sub-task-container {
+    width: 48%;
+}
+
+/* Delete Button Styles */
+.ticket-container .delete-attachment-form {
+    top: 0;
+    right: 0;
+    padding: 3px;
+}
+
+.ticket-container .btn-gray {
+    padding: 0.15rem;
+    font-size: 0.65rem;
+    color: #999;
+    background-color: rgba(0, 0, 0, 0.05);
+    border-radius: 50%;
+}
+
+#comments-list,
+#private-comments-list {
+    max-height: 280px;
+    overflow-y: auto;
+    padding-right: 15px;
+}
+
+/* Sub-Tasks and Approval Requests Max Height */
+.sub-tasks,
+.approval-requests {
+    max-height: 300px;
+    overflow-y: auto;
+}
+
+/* Back Button Styles */
+.btn-secondary {
+    background-color: #6c757d;
+    border-color: #6c757d;
+    margin-top: 15px;
+    padding: 0.375rem 0.75rem;
+}
+
+.btn-secondary:hover {
+    background-color: #5a6268;
+    border-color: #545b62;
+}
+
+.back-button-container {
+    padding-top: 15px;
+    margin-bottom: 20px;
+}
+
+/* Refined Actions Container */
+#actionsContainer {
+    display: flex;
+    flex-direction: column;
+    padding: 10px;
+    background-color: #f9f9f9;
+    border: 1px solid #e0e0e0;
+    border-radius: 5px;
+    margin-bottom: 20px;
+}
+
+.action-bar {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+}
+
+/* Adjust form and button size on smaller screens */
+@media (max-width: 768px) {
+    .action-item {
+        width: 100%;
+        margin-bottom: 10px;
+    }
+
+    .action-btn {
+        width: 100%;
+    }
+
+    .vertical-separator {
+        display: none;
+    }
+
+    .action-bar {
+        flex-direction: column;
+    }
+}
+
+/* Vertical Separator */
+.vertical-separator {
+    width: 1px;
+    height: 35px;
+    background-color: #ddd;
+    margin: 0 15px;
+}
+
+/* Comments vs Forwarding Size Adjustment */
+@media (min-width: 992px) {
+    .ticket-comments {
+        flex: 2; /* Comments section takes up more space */
+    }
+    .forwarding-history {
+        flex: 1; /* Forwarding section takes up less space */
+    }
+}
+
+/* Action Bar */
+.action-bar {
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    width: 100%;
+}
+
+/* Action Items */
+.action-item {
+    display: flex;
+    align-items: center;
+    margin-right: 15px;
+}
+
+/* Action Buttons */
+.action-btn {
+    min-width: 130px;
+    font-size: 0.875rem;
+    padding: 6px 12px;
+}
+
+/* Dropdown Select */
+.action-select {
+    min-width: 180px;
+    padding: 4px 8px;
+    font-size: 0.875rem;
+}
