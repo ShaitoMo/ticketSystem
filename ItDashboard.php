@@ -212,25 +212,43 @@ $chartDataByStatus = [
             font-weight: 500;
         }
 
-        /* Chart container adjustments */
-        .chart-container {
-            width: 100%;
-            height: 400px;
-            margin: 0 auto; /* Center the chart */
-        }
+        /* General container styling */
+.admin-dashboard .chart-container {
+    width: 100%;
+    margin: 20px 0; /* Adding space between chart rows */
+}
 
-        /* Adjusting the chart to fit properly */
-        @media (max-width: 768px) {
-            .chart-container {
-                height: 300px;
-            }
-        }
+.chart-container h3 {
+    margin-bottom: 20px; /* Space between heading and chart */
+}
 
-        @media (max-width: 576px) {
-            .chart-container {
-                height: 250px;
-            }
-        }
+/* Canvas wrapper to hold each canvas element */
+.canvas-wrapper {
+    width: 100%;
+    height: 400px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+canvas {
+    width: 100% !important;
+    height: 100% !important;
+}
+
+/* Responsive adjustments for smaller screens */
+@media (max-width: 768px) {
+    .canvas-wrapper {
+        height: 300px;
+    }
+}
+
+@media (max-width: 576px) {
+    .canvas-wrapper {
+        height: 250px;
+    }
+}
+
     </style>
 </head>
 <body>
@@ -247,7 +265,7 @@ $chartDataByStatus = [
                         <span class="card-title">All Tickets</span>
                         <i class="material-icons card-icon">list_alt</i>
                     </div>
-                    <p class="card-text">View all tickets in the system</p>
+                    <p class="card-text">All tickets  system</p>
                 </div>
             </a>
         </div>
@@ -329,7 +347,7 @@ $chartDataByStatus = [
                         <span class="card-title">All Forwarded Tickets</span>
                         <i class="material-icons card-icon">forward_to_inbox</i>
                     </div>
-                    <p class="card-text">View all forwarded tickets</p>
+                    <p class="card-text">all forwarded tickets</p>
                 </div>
             </a>
         </div>
@@ -337,32 +355,36 @@ $chartDataByStatus = [
      
     </div>
    
-<div class="row justify-content-center chart-row">
-    <div class="col-md-8">
+    <div class="row justify-content-center chart-row">
+    <div class="col-md-6">
         <div class="chart-container">
             <h3 class="text-center"><i class="fas fa-chart-line"></i> Assigned vs Resolved Tickets (Last 14 Days)</h3>
-            <canvas id="assignedVsResolvedChart"></canvas>
+            <div class="canvas-wrapper">
+                <canvas id="assignedVsResolvedChart"></canvas>
+            </div>
         </div>
     </div>
-</div>
-
-<div class="row justify-content-center chart-row">
-    <div class="col-md-8">
+    <div class="col-md-6">
         <div class="chart-container">
             <h3 class="text-center"><i class="fas fa-chart-pie"></i> Tickets by Category</h3>
-            <canvas id="ticketsByCategoryChart"></canvas>
+            <div class="canvas-wrapper">
+                <canvas id="ticketsByCategoryChart"></canvas>
+            </div>
         </div>
     </div>
 </div>
 
 <div class="row justify-content-center chart-row">
-    <div class="col-md-8">
+    <div class="col-md-6">
         <div class="chart-container">
             <h3 class="text-center"><i class="fas fa-chart-bar"></i> Tickets by Status</h3>
-            <canvas id="ticketsByStatusChart"></canvas>
+            <div class="canvas-wrapper">
+                <canvas id="ticketsByStatusChart"></canvas>
+            </div>
         </div>
     </div>
 </div>
+
 
 
 </div>

@@ -608,6 +608,8 @@ elseif ($ticket_type == 'new') {
             "language": {
                 "emptyTable": "No recommended tickets available."
             }
+            ,
+            "order": [[6, "desc"]]
         });
     } catch (error) {
         console.error('Error initializing DataTables for #recomended:', error);
@@ -617,8 +619,10 @@ elseif ($ticket_type == 'new') {
         $('#Tickets').DataTable({
             "language": {
                 "emptyTable": "No tickets available."
-            }
+            },
+            "order": [[6, "desc"]] // Replace with the index of the created_at column
         });
+       
     } catch (error) {
         console.error('Error initializing DataTables for #Tickets:', error);
     }
