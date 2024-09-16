@@ -45,99 +45,113 @@ if ($user_role == 'IT Administrator') {
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
-        .custom-navbar {
-            background-color: #007BFF; 
-            padding-bottom: 5px;
-        }
 
-        .custom-navbar .navbar-brand,
-        .custom-navbar .nav-link {
-            color: #fff;
-        }
+            .custom-navbar {
+                background-color: #007BFF;
+                padding-bottom: 5px;
+                position: fixed; /* This makes the navbar fixed at the top */
+                top: 0; /* Align it to the top */
+                left: 0; /* Align it to the left */
+                width: 100%; /* Ensure it spans the full width of the page */
+                z-index: 1000; /* Make sure it stays above other elements */
+                box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Add a subtle shadow for depth */
+            }
 
-        .custom-navbar .nav-link:hover {
-            color: #D3D3D3;
-        }
+            .custom-navbar .navbar-brand,
+            .custom-navbar .nav-link {
+                color: #fff;
+            }
 
-        .custom-navbar .user-info {
-            color: #fff;
-            font-weight: bold;
-        }
+            .custom-navbar .nav-link:hover {
+                color: #D3D3D3;
+            }
 
-        .custom-navbar .offcanvas-header {
-            background-color: #007BFF;
-            color: #fff;
-        }
+            .custom-navbar .user-info {
+                color: #fff;
+                font-weight: bold;
+            }
 
-        .custom-navbar .offcanvas-body .nav-link {
-            color: #007BFF;
-        }
+            .custom-navbar .offcanvas-header {
+                background-color: #007BFF;
+                color: #fff;
+            }
 
-        .custom-navbar .offcanvas-body .nav-link:hover {
-            color: #0056b3;
-        }
+            .custom-navbar .offcanvas-body .nav-link {
+                color: #007BFF;
+            }
 
-        .custom-offcanvas {
-            width: 250px !important;
-        }
+            .custom-navbar .offcanvas-body .nav-link:hover {
+                color: #0056b3;
+            }
 
-        @media (min-width: 576px) {
+            /* Add some padding to the body content to account for the fixed navbar */
+            body {
+                padding-top: 70px; /* Adjust based on the height of your navbar */
+            }
+
+            /* Offcanvas custom width */
             .custom-offcanvas {
                 width: 250px !important;
             }
-        }
 
-        .notifications-wrapper {
-            position: relative;
-        }
+            @media (min-width: 576px) {
+                .custom-offcanvas {
+                    width: 250px !important;
+                }
+            }
 
-        .notification-list {
-            display: none;
-            position: absolute;
-            background-color: #fff;
-            border: 1px solid #ddd;
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-            z-index: 1000;
-            max-height: 300px;
-            overflow-y: auto;
-            width: 250px; 
-            border-radius: 8px; 
-            top: 100%; 
-            left: -270px; 
-            transform: translateY(10px); 
-            transition: opacity 0.3s ease, transform 0.3s ease; 
-            opacity: 0;
-        }
+            .notifications-wrapper {
+                position: relative;
+            }
 
-        .notification-list.show {
-            display: block;
-            opacity: 1;
-            transform: translateY(0);
-        }
+            .notification-list {
+                display: none;
+                position: fixed; /* Ensure notifications stay fixed with the navbar */
+                background-color: #fff;
+                border: 1px solid #ddd;
+                box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+                z-index: 1000;
+                max-height: 300px;
+                overflow-y: auto;
+                width: 250px;
+                border-radius: 8px;
+                top: 50px; /* Adjust this value as needed to place it below the navbar */
+                right: 50px; /* Adjust to align with the notification icon */
+                transform: translateY(10px);
+                transition: opacity 0.3s ease, transform 0.3s ease;
+                opacity: 0;
+            }
 
-        .notification-item {
-            padding: 8px 12px; 
-            border-bottom: 1px solid #ddd;
-            cursor: pointer;
-            transition: background-color 0.2s ease;
-            font-size: 0.875rem; 
-        }
+            .notification-list.show {
+                display: block;
+                opacity: 1;
+                transform: translateY(0);
+            }
 
-        .notification-item:last-child {
-            border-bottom: none;
-        }
+            .notification-item {
+                padding: 8px 12px;
+                border-bottom: 1px solid #ddd;
+                cursor: pointer;
+                transition: background-color 0.2s ease;
+                font-size: 0.875rem;
+            }
 
-        .notification-item:hover {
-            background-color: #f0f0f0;
-        }
+            .notification-item:last-child {
+                border-bottom: none;
+            }
 
-        .notification-item.read {
-            background-color: #f9f9f9;
-        }
+            .notification-item:hover {
+                background-color: #f0f0f0;
+            }
 
-        .notification-item.unread {
-            background-color: #e2e3e5;
-        }
+            .notification-item.read {
+                background-color: #f9f9f9;
+            }
+
+            .notification-item.unread {
+                background-color: #e2e3e5;
+            }
+
 
     </style>
 </head>

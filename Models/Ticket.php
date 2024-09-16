@@ -409,7 +409,7 @@ class Ticket {
             $query .= " AND campus_id = :campus_id";
         }
         
-        // Add ordering and limit
+        // Add ordering and limit (Newest to Oldest)
         $query .= " ORDER BY created_at DESC LIMIT :offset, :limit";
         
         // Prepare the statement
@@ -443,6 +443,7 @@ class Ticket {
             $stmt->bindParam(":campus_id", $campus_id, PDO::PARAM_INT);
         }
         
+        // Bind offset and limit
         $stmt->bindParam(":offset", $offset, PDO::PARAM_INT);
         $stmt->bindParam(":limit", $limit, PDO::PARAM_INT);
         
@@ -452,9 +453,10 @@ class Ticket {
     }
     
     
+    
     public function getTeamTickets($mainCategory, $status = '', $priority = '', $assigned_to_filter = 'assigned', $subCategory = '', $created_by = '', $approved = 1, $offset = 0, $limit = 50) {
         // Base query
-        $query = "SELECT * FROM " . $this->table_name . " WHERE category_id IN (SELECT id FROM categories WHERE parent_id = :mainCategory OR id = :mainCategory)";
+        $query = "SELECT * FROM " . $this->table_name . " WHERE category_id IN (SELECT id FROM categories WHERE parent_id = :mainCategory OR id = :mainCategory) AND campus_id = 1";
         
         // Status filter
         if ($status === 'closed') {
@@ -526,6 +528,7 @@ class Ticket {
         $stmt->execute();
         return $stmt->fetchAll(PDO::FETCH_ASSOC);
     }
+    
     
     public function countTeamTickets($mainCategory, $status = '', $priority = '', $assigned_to_filter = 'assigned', $subCategory = '', $created_by = '') {
         $query = "SELECT COUNT(*) as ticket_count FROM " . $this->table_name . " WHERE category_id IN (SELECT id FROM categories WHERE parent_id = :mainCategory OR id = :mainCategory)";
