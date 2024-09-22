@@ -329,6 +329,16 @@ class AdminController {
                 return false;
             }
         }
+
+        public function getUserNamesByRoleId($role_id){
+            $role = new UserRole($this->db);
+            return $role->getUserNamesByRoleId($role_id); }
+
+
+        public function getCategoryNamesByRoleId($role_id) {
+                $category = new Category($this->db);
+                return $category->getCategoryNamesByRoleId($role_id);}
+
         
         
 

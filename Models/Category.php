@@ -157,9 +157,23 @@ class Category {
         $stmt->execute();
         $row = $stmt->fetch(PDO::FETCH_ASSOC);
         
-        // Return true if 'requires_approval' is truthy (1, '1', true), false otherwise
+        
         return !empty($row['requires_approval']);
     }
+
+    public function getCategoryNamesByRoleId($role_id) {
+
+        $query = "SELECT name FROM " . $this->table_name . " WHERE itrole_id = :role_id";
+        $stmt = $this->conn->prepare($query);
+        $stmt->bindParam(":role_id", $role_id, PDO::PARAM_INT);
+        $stmt->execute();
+        
+
+        $categories = $stmt->fetchAll(PDO::FETCH_COLUMN);
+        
+        return $categories; }
+    
     
 }
+
 ?>

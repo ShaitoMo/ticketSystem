@@ -112,6 +112,9 @@ class UserRole {
             INNER JOIN it_roles ON users.id = it_roles.user_id
             INNER JOIN roles ON it_roles.role_id = roles.id
             WHERE roles.id = :role_id
+            AND tickets.approved = 1
+            AND tickets.campus_id = 1
+            AND tickets.status != 'closed'
         ";
     
         $stmt = $this->conn->prepare($query);
@@ -121,6 +124,35 @@ class UserRole {
         $result = $stmt->fetch(PDO::FETCH_ASSOC);
         return $result['ticket_count'];
     }
+    
+    public function getUserNamesByRoleId($role_id) {
+        $query = "
+            SELECT users.id, users.first_name, users.last_name
+            FROM " . $this->table_name . "
+            INNER JOIN users ON it_roles.user_id = users.id
+            WHERE it_roles.role_id = :role_id
+        ";
+
+        $stmt = $this->conn->prepare($query);
+        $stmt->bindParam(":role_id", $role_id, PDO::PARAM_INT);
+        $stmt->execute();
+
+    
+        $users = $stmt->fetchAll(PDO::FETCH_ASSOC);
+
+
+        $userNames = [];
+        foreach ($users as $user) {
+            $fullName = $user['first_name'] . ' ' . $user['last_name'];
+            $userNames[] = [
+                'id' => $user['id'], 
+                'full_name' => $fullName
+            ];
+        }
+
+        return $userNames;
+    }
+    
     
     
     
