@@ -46,111 +46,147 @@ if ($user_role == 'IT Administrator') {
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
 
-            .custom-navbar {
-                background-color: #007BFF;
-                padding-bottom: 5px;
-                position: fixed; /* This makes the navbar fixed at the top */
-                top: 0; /* Align it to the top */
-                left: 0; /* Align it to the left */
-                width: 100%; /* Ensure it spans the full width of the page */
-                z-index: 1000; /* Make sure it stays above other elements */
-                box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Add a subtle shadow for depth */
-            }
+        .custom-navbar {
+            background-color: #007BFF;
+            padding-bottom: 5px;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            z-index: 1000;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
 
-            .custom-navbar .navbar-brand,
-            .custom-navbar .nav-link {
-                color: #fff;
-            }
+        .custom-navbar .navbar-brand,
+        .custom-navbar .nav-link {
+            color: #fff;
+            font-size: 1.1rem;
+        }
 
-            .custom-navbar .nav-link:hover {
-                color: #D3D3D3;
-            }
+        .custom-navbar .nav-link:hover {
+            color: #D3D3D3;
+        }
 
-            .custom-navbar .user-info {
-                color: #fff;
-                font-weight: bold;
-            }
+        .custom-navbar .user-info {
+            color: #fff;
+            font-weight: bold;
+            margin-left: 10px;
+        }
 
-            .custom-navbar .offcanvas-header {
-                background-color: #007BFF;
-                color: #fff;
-            }
+        .custom-navbar .notifications-wrapper {
+            margin-left: auto;
+            display: flex;
+            align-items: center;
+        }
 
-            .custom-navbar .offcanvas-body .nav-link {
-                color: #007BFF;
-            }
+        .custom-navbar .notifications-wrapper .nav-link {
+            color: white;
+            font-size: 1.2rem;
+        }
 
-            .custom-navbar .offcanvas-body .nav-link:hover {
-                color: #0056b3;
-            }
+        .notification-badge {
+            background-color: red;
+            color: white;
+            font-size: 0.75rem;
+            padding: 0.25rem 0.5rem;
+        }
 
-            /* Add some padding to the body content to account for the fixed navbar */
-            body {
-                padding-top: 70px; /* Adjust based on the height of your navbar */
-            }
+        .custom-navbar .offcanvas-header {
+            background-color: #007BFF;
+            color: #fff;
+        }
 
-            /* Offcanvas custom width */
-            .custom-offcanvas {
-                width: 250px !important;
-            }
+        .custom-navbar .offcanvas-body .nav-link {
+            color: #007BFF;
+            display: flex;
+            align-items: center;
+            padding: 10px;
+            font-size: 1rem;
+        }
 
-            @media (min-width: 576px) {
-                .custom-offcanvas {
-                    width: 250px !important;
-                }
-            }
+        .custom-navbar .offcanvas-body .nav-link:hover {
+            background-color: #f0f0f0;
+            color: #0056b3;
+        }
 
-            .notifications-wrapper {
-                position: relative;
-            }
+        .custom-navbar .offcanvas-body .nav-link i {
+            margin-right: 10px;
+        }
 
-            .notification-list {
-                display: none;
-                position: fixed; /* Ensure notifications stay fixed with the navbar */
-                background-color: #fff;
-                border: 1px solid #ddd;
-                box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-                z-index: 1000;
-                max-height: 300px;
-                overflow-y: auto;
-                width: 250px;
-                border-radius: 8px;
-                top: 50px; /* Adjust this value as needed to place it below the navbar */
-                right: 50px; /* Adjust to align with the notification icon */
-                transform: translateY(10px);
-                transition: opacity 0.3s ease, transform 0.3s ease;
-                opacity: 0;
-            }
+        body {
+            padding-top: 70px;
+        }
 
-            .notification-list.show {
-                display: block;
-                opacity: 1;
-                transform: translateY(0);
-            }
+        /* Offcanvas custom width */
+        .custom-offcanvas {
+            width: 250px !important;
+        }
 
-            .notification-item {
-                padding: 8px 12px;
-                border-bottom: 1px solid #ddd;
-                cursor: pointer;
-                transition: background-color 0.2s ease;
-                font-size: 0.875rem;
-            }
+        /* Sidebar item hover and active styles */
+        .offcanvas-body .nav-link.active,
+        .offcanvas-body .nav-link:hover {
+            background-color: #e9ecef;
+            color: #0056b3;
+        }
 
-            .notification-item:last-child {
-                border-bottom: none;
-            }
+        /* Sidebar icon size and alignment */
+        .offcanvas-body .nav-link i {
+            font-size: 1.25rem;
+            margin-right: 10px;
+        }
 
-            .notification-item:hover {
-                background-color: #f0f0f0;
-            }
+        .notifications-wrapper {
+            position: relative;
+        }
 
-            .notification-item.read {
-                background-color: #f9f9f9;
-            }
+        .notification-list {
+            display: none;
+            position: fixed;
+            background-color: #fff;
+            border: 1px solid #ddd;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            z-index: 1000;
+            max-height: 300px;
+            overflow-y: auto;
+            width: 250px;
+            border-radius: 8px;
+            top: 50px;
+            right: 50px;
+            transform: translateY(10px);
+            transition: opacity 0.3s ease, transform 0.3s ease;
+            opacity: 0;
+        }
 
-            .notification-item.unread {
-                background-color: #e2e3e5;
-            }
+        .notification-list.show {
+            display: block;
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .notification-item {
+            padding: 8px 12px;
+            border-bottom: 1px solid #ddd;
+            cursor: pointer;
+            transition: background-color 0.2s ease;
+            font-size: 0.875rem;
+        }
+
+        .notification-item:last-child {
+            border-bottom: none;
+        }
+
+        .notification-item:hover {
+            background-color: #f0f0f0;
+        }
+
+        .notification-item.read {
+            background-color: #f9f9f9;
+        }
+
+        .notification-item.unread {
+            background-color: #e2e3e5;
+        }
+
 
 
     </style>
@@ -210,7 +246,7 @@ if ($user_role == 'IT Administrator') {
                     <a class="nav-link" href="Teams.php"><i class="fas fa-user-shield"></i> IT Team</a>
                     <a class="nav-link" href="settings.php"><i class="fas fa-cogs"></i> Settings</a>
                     
-                <?php } elseif ($user_role == 'IT Personnel') { ?>
+                <?php } elseif ($user_role == 'IT Personnel' ||  $user_role == 'IT Coordinator'       ||$user_role == 'Sub-Admin'){ ?>
                     <a class="nav-link" href="AdminDashboard.php"><i class="fas fa-home"></i> Home</a>
                     <a class="nav-link" href="allTickets.php"><i class="fas fa-ticket-alt"></i> All Tickets</a>
                     <a class="nav-link" href="myTickets.php"><i class="fas fa-user-tag"></i> My Tickets</a>
@@ -252,24 +288,32 @@ document.addEventListener('DOMContentLoaded', function() {
     var notificationList = document.getElementById('notification-list');
     var notificationBadge = document.getElementById('notification-badge');
 
-   
-
+    // Fetch notifications on page load
     fetchNotifications();
 
-    if (notificationsIcon && notificationList) {
-        notificationsIcon.addEventListener('mouseover', function() {
-            if (notificationList.children.length > 0) {
-                notificationList.classList.add('show');
-            }
-        });
+    // Show notification list on icon hover
+    notificationsIcon.addEventListener('mouseenter', function() {
+        if (notificationList.children.length > 0) {
+            notificationList.classList.add('show');
+        }
+    });
 
-        notificationsIcon.addEventListener('mouseout', function() {
-            notificationList.classList.remove('show');
-        });
+    // Hide notification list when mouse leaves the icon or the notification list
+    notificationsIcon.addEventListener('mouseleave', function() {
+        hideNotificationList();
+    });
+
+    notificationList.addEventListener('mouseleave', function() {
+        hideNotificationList();
+    });
+
+    // Function to hide the notification list
+    function hideNotificationList() {
+        notificationList.classList.remove('show');
     }
-
-    setInterval(fetchNotifications, 60000); // Fetch notifications every 60 seconds
+    setInterval(fetchNotifications, 60000);
 });
+
 </script>
 </body>
 </html>

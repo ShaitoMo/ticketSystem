@@ -422,11 +422,11 @@ if ($ticket_id) {
                                     <input type="hidden" name="ticket_id" value="<?php echo htmlspecialchars($ticket['id']); ?>">
 
                                     <button type="submit" name="response" value="solved" class="btn btn-success btn-sm">
-                                        <i class="fas fa-check"></i> Solved
+                                        <i class="fas fa-check"></i> Close
                                     </button>
 
                                     <button type="submit" name="response" value="unsolved" class="btn btn-danger btn-sm">
-                                        <i class="fas fa-times"></i> Unsolved
+                                        <i class="fas fa-times"></i> Progress
                                     </button>
                                 </div>
                             </form>
@@ -509,8 +509,7 @@ if ($ticket_id) {
                 </div>
             <?php endif; ?>
         </div>
-        <!-- Inside a container with full-width separator -->
-<!-- Inside a container with full-width separator -->
+
 <div class="container">
     <div class="full-width-separator">
         <hr class="my-4 border-primary">
@@ -670,7 +669,11 @@ if ($ticket_id) {
     </div>
     </div>
     <?php if (!$ishead && !empty($pending)): ?>
-    <div class="card mb-4">
+        <div class="container">
+    <div class="full-width-separator">
+        <hr class="my-4 border-primary">
+    </div>
+    </div>
         <div class="card-header">
             <h3>Tickets Awaiting Approval</h3>
         </div>
@@ -710,7 +713,7 @@ if ($ticket_id) {
                 </tbody>
             </table>
         </div>
-    </div>
+    
 <?php endif; ?>
 </div>
 
