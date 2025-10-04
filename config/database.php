@@ -1,8 +1,8 @@
 <?php
 class Database {
-    private $host = "localhost";
+    private $host = "";
     private $db_name = "it_suport_ticket_system";
-    private $username = "root";
+    private $username = "";
     private $password = "";
     public $conn;
 
