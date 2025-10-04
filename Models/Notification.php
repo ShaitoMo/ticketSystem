@@ -75,7 +75,7 @@ class Notification {
         $body = $message;
 
         $mail = new PHPMailer(true); 
-        $fromEmail = 'shaitomohammad695@gmail.com';
+        $fromEmail = '';
 
         try {
             
@@ -83,7 +83,7 @@ class Notification {
             $mail->Host = 'smtp.gmail.com'; 
             $mail->SMTPAuth = true; 
             $mail->Username = $fromEmail; 
-            $mail->Password = 'mlcr qvgk fjof whge'; 
+            $mail->Password = ''; 
             $mail->SMTPSecure = 'tls'; 
             $mail->Port = 587; 
 
